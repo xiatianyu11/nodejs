@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var url = require('url');
 
-var whiteAPI = ['/health', '/user/login', 'user/logout'];
+var whiteAPI = ['/static', '/user/login', 'user/logout'];
 module.exports = function(req, res, next){
 
 	var session = req.session;

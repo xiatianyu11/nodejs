@@ -13,6 +13,7 @@ var rfs = require('rotating-file-stream');
 var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 
+
 mongoose.connect('mongodb://localhost:27017/mydb');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -31,9 +32,10 @@ app.use(morgan('combined', {stream: accessLogStream}));
 app.use(cookieParser());
 app.use(session({secret: "Shh, its a secret!"}));
 
+app.use('/static', express.static('public'));
 app.use('/',router)
 
-var server = app.listen(3000, function(){
+var server = app.listen(9000, function(){
   var host = server.address().address
    var port = server.address().port
 
